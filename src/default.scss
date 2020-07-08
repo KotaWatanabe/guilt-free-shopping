@@ -11,9 +11,24 @@ body {
 html,
 body,
 #root,
-.App {
+.App,
+.fullHeight {
     height: 100%;
 }
+
+// no-repeat center center/cover;
+// .homepage {
+//     background: url('./assets/background.jpg');
+//     background-position: center;
+//     background-repeat:no-repeat;
+//     background-size:cover;
+//     @media screen and (max-width:600px) {
+//         background: url('./assets/mobile-background.jpg');
+//         background-position: center;
+//         background-repeat:no-repeat;
+//         background-size:cover;
+//     }
+// }
 
 *, ::before, ::after {
     -webkit-box-sizing: border-box;
@@ -30,6 +45,7 @@ body {
 a {
     text-decoration: none;
     cursor: pointer;
+    font-family: 'Roboto', sans-serif;
 }
 
 a, a:hover {
