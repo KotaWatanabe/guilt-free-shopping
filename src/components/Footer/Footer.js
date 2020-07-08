@@ -3,8 +3,8 @@ import './styles.scss';
 
 const Footer = props => {
     return (
-        <footer className="footer"> 
-            <div className="wrap">
+        <footer className="footer" data-test="footer"> 
+            <div className="wrap" data-test="copyright">
                 &copy; Guilt free
             </div>
         </footer>
