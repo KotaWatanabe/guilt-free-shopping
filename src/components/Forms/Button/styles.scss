@@ -1,0 +1,21 @@
+.btn {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 0;
+    background: #05a081;
+    color:#fff;
+    font-size:2rem;
+    text-transform: uppercase;
+    border:0;
+    outline:0;
+    cursor: pointer;
+    transition: 0.1s;
+    
+    &:hover {
+        opacity: 0.8;
+    }
+    &:active {
+        transform: scale(0.98);
+    }
+}
