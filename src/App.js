@@ -12,6 +12,10 @@ import Products from './pages/Products/Products';
 import Cart from './pages/Cart/Cart'
 import './default.scss';
 
+//Redux
+import { Provider } from 'react-redux';
+import store from './store';
+
 const initialState = {
   currentUser: null
 }
@@ -52,38 +56,41 @@ class App extends Component {
     const { currentUser } = this.state;
 
     return (
-      <div className="App">
-          <Switch>
-            <Route exact path="/" render={() => (
-              <HomepageLayout currentUser={currentUser}>
-                <Homepage />
-              </HomepageLayout>
-            )}/>
-            <Route path="/registration" render={() => (
-              <HomepageLayout currentUser={currentUser}>
-                <Registration />
-              </HomepageLayout>
-            )}/>
-            <Route path="/login" 
-              render={() => currentUser ? <Redirect to="/"/> : (
-              <HomepageLayout currentUser={currentUser}>
-                <Login />
-              </HomepageLayout>
-            )}/>
-            <Route path="/products" 
-              render={() => (
-              <HomepageLayout currentUser={currentUser}>
-                <Products />
-              </HomepageLayout>
-            )}/>
-            <Route path="/cart" 
-              render={() => (
-              <HomepageLayout currentUser={currentUser}>
-                <Cart />
-              </HomepageLayout>
-            )}/>
-          </Switch>
-      </div>
+      <Provider store={store}>
+        <div className="App">
+            <Switch>
+              <Route exact path="/" render={() => (
+                <HomepageLayout currentUser={currentUser}>
+                  <Homepage />
+                </HomepageLayout>
+              )}/>
+              <Route path="/registration" render={() => (
+                <HomepageLayout currentUser={currentUser}>
+                  <Registration />
+                </HomepageLayout>
+              )}/>
+              <Route path="/login" 
+                render={() => currentUser ? <Redirect to="/"/> : (
+                <HomepageLayout currentUser={currentUser}>
+                  <Login />
+                </HomepageLayout>
+              )}/>
+              <Route path="/products" 
+                render={() => (
+                <HomepageLayout currentUser={currentUser}>
+                  <Products />
+                </HomepageLayout>
+              )}/>
+              <Route path="/cart" 
+                render={() => (
+                <HomepageLayout currentUser={currentUser}>
+                  <Cart />
+                </HomepageLayout>
+              )}/>
+            </Switch>
+        </div>
+      </Provider>
+
     );
   }
 
