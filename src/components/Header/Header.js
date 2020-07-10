@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/utils';
 
 const Header = ({ cartItems, currentUser }) => {
-    // const { currentUser } = this.props;
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0)
     return (
         <header className="header" data-test="header">
@@ -62,7 +61,8 @@ Header.defaultProps = {
 }
 
 const mapStateToProps = state => ({
-    cartItems: state.cart.items
+    cartItems: state.cart.items,
+    currentUser: state.user.currentUser
 })
 
 export default connect(mapStateToProps,{})(Header)

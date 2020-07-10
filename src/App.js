@@ -13,40 +13,26 @@ import Cart from './pages/Cart/Cart'
 import './default.scss';
 
 //Redux
-import { Provider } from 'react-redux';
-import store from './store';
-
-const initialState = {
-  currentUser: null
-}
+import { connect } from 'react-redux';
+import { setCurrentUser } from './actions/user';
 
 class App extends Component {
-  
-  state = {
-      ...initialState,
-  }
-
   authListener = null;
 
   componentDidMount() {
+    const { setCurrentUser } =this.props
     this.authListener = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef.onSnapshot(snapshot => {
-          this.setState({
-            currentUser: {
+          setCurrentUser({
               id: snapshot.id,
               ...snapshot.data()
-            }
           })
         })
       }
-
-      this.setState({
-        ...initialState
-      })
+      setCurrentUser(userAuth)
     });
-    
   }  
 
   componentWillUnmount() {
@@ -54,46 +40,49 @@ class App extends Component {
   }
 
   render() {
-    const { currentUser } = this.state;
+    const { currentUser } = this.props;
     return (
-      <Provider store={store}>
         <div className="App">
             <Switch>
               <Route exact path="/" render={() => (
-                <HomepageLayout currentUser={currentUser}>
+                <HomepageLayout>
                   <Homepage />
                 </HomepageLayout>
               )}/>
               <Route path="/registration" render={() => currentUser ? <Redirect to="/" /> : (
-                <HomepageLayout currentUser={currentUser}>
+                <HomepageLayout>
                   <Registration />
                 </HomepageLayout>
               )}/>
               <Route path="/login" 
-                render={() => currentUser ? <Redirect to="/products"/> : (
-                <HomepageLayout currentUser={currentUser}>
+                render={() => 
+                  currentUser ? <Redirect to="/products"/> : 
+                (
+                <HomepageLayout>
                   <Login />
                 </HomepageLayout>
               )}/>
               <Route path="/products" 
                 render={() => (
-                <HomepageLayout currentUser={currentUser}>
-                  <Products products={this.state.products} addToCart={this.addToCart}/>
+                <HomepageLayout>
+                  <Products addToCart={this.addToCart}/>
                 </HomepageLayout>
               )}/>
               <Route path="/cart" 
                 render={() => (
-                <HomepageLayout currentUser={currentUser}>
+                <HomepageLayout>
                   <Cart />
                 </HomepageLayout>
               )}/>
             </Switch>
         </div>
-      </Provider>
-
     );
   }
 
 }
 
-export default App;
+const mapStateTopProps = state => ({
+  currentUser: state.user.currentUser
+})
+
+export default connect(mapStateTopProps, { setCurrentUser })(App);
