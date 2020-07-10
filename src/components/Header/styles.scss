@@ -47,6 +47,13 @@
                 &:last-child {
                     margin-right: 0;
                 }
+                a {
+                    color:#fff;
+                    font-size:1.8rem;
+                    line-height:1;
+                    text-decoration: none;
+                    text-transform: uppercase;
+                }
 
                 .cartBtn {
                     text-transform: capitalize;
@@ -57,6 +64,10 @@
                     cursor: pointer;
                     outline:0;
                     transition: 0.3s ease-in-out;
+                    a {
+                        color: #000000;
+                    }
+
                     .count {
                         padding-left: 2rem;
                     }
@@ -87,14 +98,6 @@
                             padding: 0;
                         }
                     }
-                }
-                
-                a {
-                    font-size:1.8rem;
-                    line-height:1;
-                    color: #000000;
-                    text-decoration: none;
-                    text-transform: uppercase;
                 }
             }
         }

@@ -64,13 +64,13 @@ class App extends Component {
                   <Homepage />
                 </HomepageLayout>
               )}/>
-              <Route path="/registration" render={() => (
+              <Route path="/registration" render={() => currentUser ? <Redirect to="/" /> : (
                 <HomepageLayout currentUser={currentUser}>
                   <Registration />
                 </HomepageLayout>
               )}/>
               <Route path="/login" 
-                render={() => currentUser ? <Redirect to="/"/> : (
+                render={() => currentUser ? <Redirect to="/products"/> : (
                 <HomepageLayout currentUser={currentUser}>
                   <Login />
                 </HomepageLayout>

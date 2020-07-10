@@ -17,8 +17,11 @@ const Header = ({ cartItems, currentUser }) => {
                     {currentUser && (
                         <ul>
                             <li>
+                                <Link to="/products" data-test="products" >PRODUCTS</Link>
+                            </li>
+                            <li>
                                 <span onClick={() => auth.signOut()} data-test="logout">
-                                    Logout
+                                    <Link to="/" data-test="logout" >LOGOUT</Link>
                                 </span>
                             </li>
                             <li>
