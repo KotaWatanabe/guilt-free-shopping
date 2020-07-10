@@ -23,7 +23,7 @@ const initialState = {
 class App extends Component {
   
   state = {
-      ...initialState
+      ...initialState,
   }
 
   authListener = null;
@@ -46,7 +46,8 @@ class App extends Component {
         ...initialState
       })
     });
-  }
+    
+  }  
 
   componentWillUnmount() {
     this.authListener();
@@ -54,7 +55,6 @@ class App extends Component {
 
   render() {
     const { currentUser } = this.state;
-
     return (
       <Provider store={store}>
         <div className="App">
@@ -78,7 +78,7 @@ class App extends Component {
               <Route path="/products" 
                 render={() => (
                 <HomepageLayout currentUser={currentUser}>
-                  <Products />
+                  <Products products={this.state.products} addToCart={this.addToCart}/>
                 </HomepageLayout>
               )}/>
               <Route path="/cart" 

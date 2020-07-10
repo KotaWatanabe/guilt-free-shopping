@@ -1,5 +1,5 @@
 .homepage {
-    background: url('../../assets/background.jpg');
+    background: url('../../assets/background-1.jpg');
     background-position: center;
     background-repeat:no-repeat;
     background-size:cover;
@@ -16,7 +16,7 @@
     // text-align: center;
     position: relative;
     @media screen and (max-width:600px) {
-        background: url('../../assets/mobile-background.jpg');
+        background: url('../../assets/mobile-background-1.jpg');
         background-position: center;
         background-repeat:no-repeat;
         background-size:cover;
@@ -66,6 +66,9 @@
                 a {
                     color:#f3f3f3;
                 }
+            }
+            &:focus {
+                outline:0;
             }
             &:active {
                 transform: scale(0.98);
