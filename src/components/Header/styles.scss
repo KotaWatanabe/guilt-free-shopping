@@ -1,11 +1,9 @@
 .header {
     height: 6.5rem;
-    // box-shadow: 0 2px 4px 0 rgba(0,0,0,0.1);
     background:#fff;
     background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
     z-index:100;
     .wrap {
-        // position: relative;
         height: 100%;
         max-width:1600px;
         margin: 0 auto;
@@ -16,15 +14,14 @@
         .logo {
             width: 13.0rem;
             font-size:2rem;
-            // position: absolute;
-            // left: 50px;
-            // top: 50%;
-            // transform: translateY(-50%);
             a {
                 color:#fff;
                 font-family: 'Roboto', sans-serif;
                 opacity:1;
-
+            }
+            @media screen and (max-width:600px) {
+                font-size:1.5rem;
+                width: 8rem;
             }
         }
         .logo :hover {
@@ -60,6 +57,9 @@
                     cursor: pointer;
                     outline:0;
                     transition: 0.3s ease-in-out;
+                    .count {
+                        padding-left: 2rem;
+                    }
                     &:hover {
                         background: rgba(0,0,0,0.5);
                         a {
@@ -73,6 +73,19 @@
                     
                     i {
                         padding-right: 0.5rem;
+                    }
+                    @media screen and (max-width:600px) {
+                        a {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                        .mycart {
+                            display: none;
+                        }
+                        .count {
+                            padding: 0;
+                        }
                     }
                 }
                 

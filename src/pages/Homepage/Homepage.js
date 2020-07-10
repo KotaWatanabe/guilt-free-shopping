@@ -8,7 +8,7 @@ const Homepage = props => {
             <div className="content">
                 <h3>No more guilt for shopping</h3>
                 <h1 data-test="title">GUILT FREE</h1>
-                <button data-test="ctaBtn"><Link to="/products">Shop now</Link></button>
+                <Link to="/products"><button data-test="ctaBtn">Shop now</button></Link>
             </div>
         </section>
     )

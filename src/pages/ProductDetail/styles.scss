@@ -42,7 +42,11 @@
             // background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
             position: absolute;
             top:100%;
-            transform: translateY(-100%)
+            transform: translateY(-100%);
+            .count {
+                float:right;
+                margin-right: 1rem;
+            }
         }
     }
     // .card-inner {

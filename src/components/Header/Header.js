@@ -1,10 +1,12 @@
 import React from 'react';
 import './styles.scss';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/utils';
 
-const Header = props => {
-    const { currentUser } = props;
+const Header = ({ cartItems, currentUser }) => {
+    // const { currentUser } = this.props;
+    const totalItems = cartItems.reduce((a, c) => a + c.count, 0)
     return (
         <header className="header" data-test="header">
             <div className="wrap">
@@ -23,7 +25,8 @@ const Header = props => {
                                 <button className="cartBtn">
                                     <Link to="/cart">
                                         <i className="fas fa-cart-plus" />
-                                        my cart
+                                            <span className="mycart">my cart</span> 
+                                        <span className="count">{totalItems}</span>
                                     </Link>
                                 </button>
                             </li>
@@ -55,5 +58,9 @@ Header.defaultProps = {
     currentUser: null
 }
 
-export default Header
+const mapStateToProps = state => ({
+    cartItems: state.cart.items
+})
+
+export default connect(mapStateToProps,{})(Header)
 

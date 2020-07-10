@@ -1,16 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { filterProducts, sortProducts } from '../../actions/products'
+import './styles.scss'
 
 const Filter = ({ filterProducts, sortProducts, products, category, filteredProducts, sort}) => {
     return (
-        <div className="row">
-        <div className="col-md-4">{`${filteredProducts.length} products found.`}</div>
-        <div className="col-md-4">
+        <div className="filter-wrap">
+        <div className="price-wrap">
           <label>
-            Order by
+            Order by Price
             <select
-              className="form-control"
               value={sort}
               onChange={(e) => {
                 sortProducts(
@@ -25,12 +24,11 @@ const Filter = ({ filterProducts, sortProducts, products, category, filteredProd
             </select>
           </label>
         </div>
-        <div className="col-md-4">
+        <div className="category-wrap">
           <label>
-            {" "}
+            {/* {" "} */}
             Filter Category
             <select
-              className="form-control"
               value={category}
               onChange={(event) => {
                 filterProducts(

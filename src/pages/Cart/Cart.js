@@ -4,13 +4,14 @@ import { addToCart, removeFromCart } from '../../actions/cart';
 import './styles.scss'
 
 const Cart = ({ cartItems, removeFromCart }) => {
+    const totalItems = cartItems.reduce((a, c) => a + c.count, 0)
     return (
         <div>
             {cartItems.length ===  0 ? (
                 "Cart is empty"
             ) : (
                 <div>
-                    You have {cartItems.length} items in the cart. <hr />
+                    You have {totalItems} items in the cart. <hr />
                 </div>
             )}
             {cartItems.length > 0 && (

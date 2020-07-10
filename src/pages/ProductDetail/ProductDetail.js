@@ -14,19 +14,31 @@ const ProductDetail = ({
         info,
         price,
         img,
-        inCart
+        count
     }
-}) => (
-    <div className="card">
-        <img src={img} alt=""/>
-        <div className="content">
-            <h1>{title}</h1>
-            <p>{info}</p>
-            <p><strong>Price:</strong> ${price}</p>
-                <Button onClick={() => addToCart(cartItems, product)}>Add To Cart</Button>
+}) => {
+    // const count = cartItems.forEach(item => {
+    //     if(item.id === product.id) {
+    //         return item.count
+    //     }
+    // })
+    // console.log(count);
+    
+    return (
+        <div className="card">
+            <img src={img} alt=""/>
+            <div className="content">
+                <h1>{title}</h1>
+                <p>{info}</p>
+                <p><strong>Price:</strong> ${price}</p>
+                    <Button onClick={() => addToCart(cartItems, product)}>Add To Cart <span className="count">{count}</span> </Button>
+            </div>
         </div>
-    </div>
-)
+    )
+}
+
+
+
 
 
 const mapStateToProps = state => ({

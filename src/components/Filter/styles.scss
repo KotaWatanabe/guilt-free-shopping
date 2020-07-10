@@ -1,0 +1,13 @@
+.filter-wrap {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    select {
+        margin-left: 1rem;
+    }
+
+    .category-wrap {
+        margin-left: 2rem;
+    }
+}

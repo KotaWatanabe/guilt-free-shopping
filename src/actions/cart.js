@@ -5,6 +5,7 @@ import {
 
 export const addToCart = (products, item) => dispatch => {
     try {
+        item.count += 1;
         const cartItems = [...products]
         let productAlreadyInCart = false;
       
@@ -29,17 +30,9 @@ export const addToCart = (products, item) => dispatch => {
 }
 
 export const removeFromCart = (products, item) => (dispatch) => {
-    // let cartItems = [...products]
-    // if(item.count = 1) {
-    //     cartItems.filter(product => {
-    //         return (
-    //             product.id !== item.id
-    //         )
-    //     });
-    // } else {
-    //     item.count -= 1;
-    // }
-    const cartItems = products.slice().filter((a) => a.id !== item.id);
+    const cartItems = products.slice();
+    const index = cartItems.indexOf(item);
+    item.count !== 1 ? item.count--  : cartItems.splice(index, 1);
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     dispatch({ 
         type: REMOVE_FROM_CART, 
