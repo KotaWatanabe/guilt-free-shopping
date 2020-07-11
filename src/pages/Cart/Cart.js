@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { addToCart, removeFromCart, clearCart } from '../../actions/cart';
 import Button from '../../components/Forms/Button/Button'
+import PayPalButton from '../../components/PayPalButton/PayPalButton';
 import './styles.scss'
 
 const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
@@ -52,6 +53,11 @@ const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
             {cartItems.length > 0 && 
                 <div className="summery">
                     <h3>Total: ${sum}</h3>
+                    <PayPalButton 
+                        sum={sum}
+                        clearCart={clearCart}
+                    
+                    />
                     <Button style={{backgroundColor:'#ff9a9e'}}>Check Out</Button>
                     <Button onClick={() => clearCart()} style={{background:'#6991c7'}}>Clear Cart</Button>
                 </div>

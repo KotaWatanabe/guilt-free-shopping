@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ProductInfo from '../ProductInfo/ProductInfo';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToCart } from '../../actions/cart';
