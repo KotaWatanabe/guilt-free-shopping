@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {
-    GET_RPODUCTS,
+    GET_PRODUCTS,
     FILTER_PRODUCTS_BY_CATEGORY,
     ORDER_PRODUCTS_BY_PRICE
 } from './types';
@@ -9,7 +9,7 @@ export const getProducts = () => async dispatch => {
     try {
         const res = await axios.get('http://localhost:8000/products/')
         dispatch({
-            type:GET_RPODUCTS,
+            type:GET_PRODUCTS,
             payload:res.data
         });
     } catch (err) {

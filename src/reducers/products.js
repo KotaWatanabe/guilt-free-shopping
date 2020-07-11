@@ -1,5 +1,5 @@
 import {
-    GET_RPODUCTS,
+    GET_PRODUCTS,
     FILTER_PRODUCTS_BY_CATEGORY,
     ORDER_PRODUCTS_BY_PRICE,
 } from '../actions/types'
@@ -15,7 +15,7 @@ export default function(state = initialState, action) {
     const { type, payload } = action
 
     switch(type) {
-        case GET_RPODUCTS:
+        case GET_PRODUCTS:
         return {
             ...state,
             products:payload,

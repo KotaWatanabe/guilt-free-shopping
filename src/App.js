@@ -9,6 +9,7 @@ import Homepage from './pages/Homepage/Homepage';
 import Registration from './pages/Registration/Registration';
 import Login from './pages/Login/Login';
 import Products from './pages/Products/Products';
+import ProductInfo from './pages/ProductInfo/ProductInfo';
 import Cart from './pages/Cart/Cart'
 import './default.scss';
 
@@ -66,6 +67,12 @@ class App extends Component {
                 render={() => (
                 <HomepageLayout>
                   <Products addToCart={this.addToCart}/>
+                </HomepageLayout>
+              )}/>
+              <Route path="/product-info" 
+                render={() => (
+                <HomepageLayout>
+                  <ProductInfo />
                 </HomepageLayout>
               )}/>
               <Route path="/cart" 

@@ -1,11 +1,12 @@
 import {
     ADD_TO_CART,
     REMOVE_FROM_CART,
+    CLEAR_CART
 } from './types';
 
 export const addToCart = (products, item) => dispatch => {
     try {
-        item.count += 1;
+        item.inCart = true;
         const cartItems = [...products]
         let productAlreadyInCart = false;
       
@@ -38,4 +39,13 @@ export const removeFromCart = (products, item) => (dispatch) => {
         type: REMOVE_FROM_CART, 
         payload: cartItems 
     });
-  };
+};
+export const clearCart = () => (dispatch) => {
+    const cartItems = [];
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    dispatch({ 
+        type: REMOVE_FROM_CART, 
+        payload: cartItems 
+    });
+};
+

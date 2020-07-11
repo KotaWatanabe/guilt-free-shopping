@@ -16,11 +16,17 @@ const Header = ({ cartItems, currentUser }) => {
                     {currentUser && (
                         <ul>
                             <li>
-                                <Link to="/products" data-test="products" >PRODUCTS</Link>
+                                <Link to="/products" data-test="products">
+                                    <span className="hide-sm">PRODUCTS</span>    
+                                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                                </Link>
                             </li>
                             <li>
                                 <span onClick={() => auth.signOut()} data-test="logout">
-                                    <Link to="/" data-test="logout" >LOGOUT</Link>
+                                    <Link to="/" data-test="logout" >
+                                        <span className="hide-sm">LOGOUT</span> 
+                                        <i class="fas fa-sign-out-alt"></i> 
+                                    </Link>
                                 </span>
                             </li>
                             <li>

@@ -8,7 +8,7 @@ import './styles.scss'
 const Products = ({ getProducts, products, isLoading }) => {
     useEffect(() => {
         getProducts()
-    },[getProducts])    
+    },[])    
         return isLoading ? (<h1>Loading</h1>) : (
             <div className="products">
                 <h1>Our Products</h1>

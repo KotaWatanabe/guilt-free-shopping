@@ -1,7 +1,84 @@
-.cart {
-    height: 100%;
-
-    h1 {
+.cartPage {
+    width: 100%;
+    h2 {
         text-align: center;
+        margin-top: 3rem;
+        font-family: 'Times New Roman', Times, serif;
+    }
+    .wrap {
+        display:grid;
+        grid-template-columns: repeat(5, 1fr);
+        margin-bottom: 2rem;
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &.img {
+                img {
+                    width: 100%;
+                }
+            }
+            
+            &.quantity {
+                // background:red;
+                .quantityBtn {
+                    width: 100%;
+                    // background:blue;
+                    display:flex;
+                    justify-content: space-around;
+                    align-items: center;
+                    button {
+                        cursor:pointer;
+                        background:#fff;
+                        border: 1px solid #030303;
+                        padding: .5rem;
+                        font-size:1.2rem;
+                        &:focus, :active{
+                            outline:0;
+                        }
+                        &:active {
+                            transform: scale(0.9)
+                        }
+                        // &:active{
+                        //     outline:0;
+                        // }
+                    }
+                }
+            }
+        }
+
+    }
+    .summery {
+        margin: 0 auto;
+        width: 30%;
+        text-align: center;
+        // border:1px solid #333;
+        Button {
+            margin-bottom: .5rem;
+        }
+    }
+    @media screen and (max-width:700px){
+        h2{
+           font-size:1.5rem; 
+        }
+        .wrap {
+            grid-template-columns: repeat(5, 1fr);
+            h3 {
+                font-size:1.2rem;
+            }
+            p {
+                font-size:1.2rem;
+            }
+        }
+
+        .summery {
+            width: 90%;
+            h3, .btn {
+                font-size:1.5rem;
+            }
+
+        }
     }
 }

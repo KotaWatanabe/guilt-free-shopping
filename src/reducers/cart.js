@@ -1,6 +1,7 @@
 import {
     ADD_TO_CART,
-    REMOVE_FROM_CART
+    REMOVE_FROM_CART,
+    CLEAR_CART
 } from '../actions/types'
 
 const initialState = {
@@ -21,6 +22,11 @@ export default function(state = initialState, action) {
             ...state,
             items:payload
         }
+        case CLEAR_CART:
+            return {
+                ...state,
+                items:payload
+            }
         default:
         return state;
 
