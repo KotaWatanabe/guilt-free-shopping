@@ -15,7 +15,7 @@ describe('Homepage component', () => {
         component = setUp();
     })
 
-    it('Should render without error', () => {    
+    it('Should render without error', () => {           
         const wrapper = findByTestAttr(component,'homepage')
         expect(wrapper.length).toBe(1);
     });

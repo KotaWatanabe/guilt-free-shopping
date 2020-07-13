@@ -1,91 +1,69 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import './styles.scss'
 import Button from '../Forms/Button/Button';
 import FormInput from '../Forms/Forminput/Forminput'
+import { withRouter } from 'react-router-dom';
 
 import { signInWithGoogle, auth } from '../../firebase/utils';
 
-const initialState = {
-    email:'',
-    password:''
-}
+const SignIn = props => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
-class SignIn extends Component {
-    constructor(props) {
-        super(props);
-        this.state= {
-            ...initialState
-        }
-
-        this.handleChange = this.handleChange.bind(this);
+    const resetForm = () => {
+        setEmail('');
+        setPassword('');
     }
 
-    handleSubmit = async e => {
+    const handleSubmit = async e => {
         e.preventDefault();
-        const { email, password  } = this.state;
 
         try {
+            
             await auth.signInWithEmailAndPassword(email, password);
-            this.setState({
-                ...initialState
-            });
-
+            resetForm();
+            // props.history.push('/products')
         } catch (err) {
             console.log(err)
         }
     }
-
-    handleChange(e) {
-        const { name,value } = e.target;
-        this.setState({
-            [name]:value
-        })
-    }
-
-    render() {
-        const { email, password } = this.state;
-        return (
-            <div className="signin">
-                <div className="wrap">
-                    <h2>
-                        LogIn
-                    </h2>
-                    <div className="formWrap">
-                        <form onSubmit={this.handleSubmit}>
-
-                            <FormInput 
-                                type="email"
-                                name="email"
-                                value={email}
-                                placeholder="Email"
-                                onChange={this.handleChange}
-                            />
-                            <FormInput 
-                                type="password"
-                                name="password"
-                                value={password}
-                                placeholder="Password"
-                                onChange={this.handleChange}
-                            />
-
-                            <Button type="submit" style={{backgroundColor:'#ff9a9e'}}>
-                                Login
-                            </Button>
-
-                            <div className="socialSignin">
-                                <div className="row">
-                                    <Button onClick={signInWithGoogle}>
-                                        Sign in with Google
-                                    </Button>
-                                </div>
+    return (
+        <div className="signin">
+            <div className="wrap">
+                <h2>
+                    LogIn
+                </h2>
+                <div className="formWrap">
+                    <form onSubmit={handleSubmit}>
+                        <FormInput 
+                            type="email"
+                            name="email"
+                            value={email}
+                            placeholder="Email"
+                            onChange={e => setEmail(e.target.value)}
+                        />
+                        <FormInput 
+                            type="password"
+                            name="password"
+                            value={password}
+                            placeholder="Password"
+                            onChange={e =>setPassword(e.target.value)}
+                        />
+                        <Button type="submit" style={{backgroundColor:'#ff9a9e'}}>
+                            Login
+                        </Button>
+                        <div className="socialSignin">
+                            <div className="row">
+                                <Button onClick={signInWithGoogle}>
+                                    Sign in with Google
+                                </Button>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        )
-    }
-
+        </div>
+    )
 }
 
-export default SignIn
+export default withRouter(SignIn);

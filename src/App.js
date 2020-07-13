@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { auth, handleUserProfile } from './firebase/utils';
+
+import Auth from './Auth/Auth';
 
 // import MainLayout from './layouts/MainLayout';
 import HomepageLayout from './layouts/HomepageLayout';
@@ -16,12 +18,11 @@ import './default.scss';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './actions/user';
 
-class App extends Component {
-  authListener = null;
+const App = props => {
+  const { setCurrentUser, currentUser } = props
 
-  componentDidMount() {
-    const { setCurrentUser } =this.props
-    this.authListener = auth.onAuthStateChanged(async userAuth => {
+  useEffect(() => {
+    const authListener = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
         const userRef = await handleUserProfile(userAuth);
         userRef.onSnapshot(snapshot => {
@@ -33,14 +34,12 @@ class App extends Component {
       }
       setCurrentUser(userAuth)
     });
-  }  
 
-  componentWillUnmount() {
-    this.authListener();
-  }
+    return () => {
+      authListener();
+    }
 
-  render() {
-    const { currentUser } = this.props;
+  }, [])
     return (
         <div className="App">
             <Switch>
@@ -49,7 +48,7 @@ class App extends Component {
                   <Homepage />
                 </HomepageLayout>
               )}/>
-              <Route path="/registration" render={() => currentUser ? <Redirect to="/" /> : (
+              <Route path="/registration" render={() => (
                 <HomepageLayout>
                   <Registration />
                 </HomepageLayout>
@@ -64,9 +63,11 @@ class App extends Component {
               )}/>
               <Route path="/products" 
                 render={() => (
-                <HomepageLayout>
-                  <Products addToCart={this.addToCart}/>
-                </HomepageLayout>
+                  <Auth>
+                    <HomepageLayout>
+                      <Products />
+                    </HomepageLayout>
+                  </Auth>
               )}/>
               <Route path="/cart" 
                 render={() => (
@@ -77,8 +78,6 @@ class App extends Component {
             </Switch>
         </div>
     );
-  }
-
 }
 
 const mapStateTopProps = state => ({

@@ -6,7 +6,7 @@ import './styles.scss'
 const Filter = ({ filterProducts, sortProducts, products, category, filteredProducts, sort}) => {
     return (
         <div className="filter-wrap">
-        <div className="price-wrap">
+        <div className="price-wrap" data-test="price-wrap">
           <label>
             Order by Price
             <select
