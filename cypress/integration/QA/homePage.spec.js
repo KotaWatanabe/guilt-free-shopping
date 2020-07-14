@@ -8,7 +8,8 @@ describe('homepage UI', () => {
     })
     it('has a Shop Now button', () => {
         cy.get('[data-test=ctaBtn]')
-            .should('have.text', 'Shop now')
+            .should('have.text', 'Shop now').click()
+            cy.url().should('include', 'products')
     })
 
     // it('goes to login page with clicking Shop Now button', () =>{

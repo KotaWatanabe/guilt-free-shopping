@@ -5,5 +5,6 @@ Cypress.Commands.add('SignIn', () => {
         cy.get('input[type="password"]').type('123456') 
         cy.root().submit()
     })
+
     cy.url().should('include', 'products')
 })
