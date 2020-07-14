@@ -54,8 +54,6 @@ describe('Header UI', () => {
             })
         
             it('displays mobile menu on click', () => {
-                // cy.get('li').contains('Developers').should('be.visible')
-                // cy.get('li').contains('Posts').should('be.visible')
                 cy.get('.fa-shopping-bag').should('be.visible')
                 cy.get('.hide-sm').first().should('not.be.visible')
                 cy.get('.fa-sign-out-alt').should('be.visible')

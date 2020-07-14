@@ -45,7 +45,7 @@ describe('Empty cart component', () => {
 
 })
 
-describe('Empty cart component', () => {
+describe('Cart with products', () => {
 
     let component;
     beforeEach(() => {
