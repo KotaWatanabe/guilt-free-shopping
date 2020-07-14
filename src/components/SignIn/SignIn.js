@@ -49,7 +49,7 @@ const SignIn = props => {
                             placeholder="Password"
                             onChange={e =>setPassword(e.target.value)}
                         />
-                        <Button type="submit" style={{backgroundColor:'#ff9a9e'}}>
+                        <Button type="submit" data-test="submitBtn" style={{backgroundColor:'#ff9a9e'}}>
                             Login
                         </Button>
                         <div className="socialSignin">

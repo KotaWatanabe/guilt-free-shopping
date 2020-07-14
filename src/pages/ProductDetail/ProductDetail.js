@@ -20,12 +20,12 @@ const ProductDetail = ({
 }) => {
     return (
         <div className="detail" data-test="product-detail">
-            <div className="card">
+            <div className="card" data-test="card">
                 <div className="card-inner">
                     <div className="card-front">
                         <img src={img} alt=""/>
                         <div className="content">
-                            <h1>{title}</h1>
+                            <h1 data-test="productTitle">{title}</h1>
                             <p><strong>Price:</strong> ${price}</p>
                          </div>
                     </div>
@@ -37,7 +37,14 @@ const ProductDetail = ({
                 </div>
 
             </div>
-            {!inCart ? (<Button onClick={() => addToCart(cartItems,product)} style={{background:'#ff9a9e'}}>Add To Cart</Button>) : ((<Button style={{background:'#6991c7'}}>Already in Cart</Button>)
+            {!inCart ? (
+                <Button onClick={() => addToCart(cartItems,product)}           
+                        style={{background:'#ff9a9e'}}                         
+                        data-test="addCartBtn">Add To Cart
+                </Button>) : (
+                (<Button style={{background:'#6991c7'}} data-test="addCartBtn">
+                    Already in Cart
+                </Button>)
             )}
         </div>
     )

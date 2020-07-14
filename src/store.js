@@ -8,12 +8,12 @@ const cartItems = localStorage.getItem("cartItems")
   : [];
 const initialState = { cart: { items: cartItems } };
 
-const middleware = [thunk];
+export const middleware = [thunk];
 
-const store = createStore(
+export const store = createStore(
     rootReducer, 
     initialState, 
     composeWithDevTools(applyMiddleware(...middleware))
 );
 
-export default store;
+

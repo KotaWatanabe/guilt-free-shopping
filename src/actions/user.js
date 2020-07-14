@@ -13,13 +13,3 @@ export const setCurrentUser = user => dispatch => {
     }
 }
 
-// export const removeFromCart = (products, item) => (dispatch) => {
-//     const cartItems = products.slice();
-//     const index = cartItems.indexOf(item);
-//     item.count !== 1 ? item.count--  : cartItems.splice(index, 1);
-//     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-//     dispatch({ 
-//         type: REMOVE_FROM_CART, 
-//         payload: cartItems 
-//     });
-//   };

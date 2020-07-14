@@ -1,54 +1,87 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Header from './Header';
-import { findByTestAttr } from '../../../utils/index'
+import { findByTestAttr } from '../../../utils';
+import { Header } from './Header';
 
-const setUp = (props={}) => {
+const nonLoggedinProps = {
+    cartItems: [
+        {'title':'test1', 'count':1},
+        {'title':'test2', 'count':1},
+    ]
+}
+const loggedinProps = {
+    cartItems: [
+        {'title':'test1', 'count':1},
+        {'title':'test2', 'count':1},
+    ],
+    currentUser: [
+        {'name':'test1'}
+    ]
+}
+
+const setUpNonLoggedInUser = (props=nonLoggedinProps) => {
     const component = shallow(<Header {...props} />);
     return component;
 };
 
-const loginUserProps = {
-    currentUser:'test'
-}
+const setUpLoggedInUser = (props=loggedinProps) => {
+    const component = shallow(<Header {...props} />);
+    return component;
+};
 
-describe('Header component', () => {
+describe('Header for non logged-in user', () => {
 
     let component;
     beforeEach(() => {
-        component = setUp();
+        component = setUpNonLoggedInUser();
     })
 
-    it('Should render without error', () => {    
+    it('Should render without error', () => {           
         const wrapper = findByTestAttr(component,'header')
         expect(wrapper.length).toBe(1);
     });
 
-    it('Should render a logo', () => {    
-        const logo = findByTestAttr(component,'logo')
-        expect(logo.length).toBe(1);
-    })
+    it('Should render registration link', () => {           
+        const wrapper = findByTestAttr(component,'registration')
+        expect(wrapper.length).toBe(1);
+    });
 
-    it('Should render a register button', () => {    
-        const registration = findByTestAttr(component,'registration')
-        expect(registration.length).toBe(1);
-    })
+    it('Should render login link', () => {           
+        const wrapper = findByTestAttr(component,'login')
+        expect(wrapper.length).toBe(1);
+    });
 
-    it('Should render a login button', () => {    
-        const login = findByTestAttr(component,'login')
-        expect(login.length).toBe(1);
-    })
-});
-
-describe('Header for login user',() => {
-    let component;
-    beforeEach(() => {
-        component = setUp({...loginUserProps});
-    })
-
-    it('Should render a logout button', () => {    
-        const logout = findByTestAttr(component,'logout')
-        expect(logout.length).toBe(1);
-    })
 })
 
+describe('Header for loggedIn user',() => {
+    let component;
+    beforeEach(() => {
+        component = setUpLoggedInUser();
+    })
+
+    it('Should render without error', () => {           
+        const wrapper = findByTestAttr(component,'header')
+        expect(wrapper.length).toBe(1);
+    });
+
+    it('Should render products link', () => {           
+        const wrapper = findByTestAttr(component,'products')
+        expect(wrapper.length).toBe(1);
+    });
+
+
+    it('Should render products link', () => {           
+        const wrapper = findByTestAttr(component,'products')
+        expect(wrapper.length).toBe(1);
+    });
+
+    it('Should render logout link', () => {           
+        const wrapper = findByTestAttr(component,'logout')
+        expect(wrapper.length).toBe(1);
+    });
+
+    it('Should render myCart link', () => {           
+        const wrapper = findByTestAttr(component,'myCart')
+        expect(wrapper.length).toBe(1);
+    });
+})

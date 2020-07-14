@@ -16,20 +16,6 @@ body,
     height: 100%;
 }
 
-// no-repeat center center/cover;
-// .homepage {
-//     background: url('./assets/background.jpg');
-//     background-position: center;
-//     background-repeat:no-repeat;
-//     background-size:cover;
-//     @media screen and (max-width:600px) {
-//         background: url('./assets/mobile-background.jpg');
-//         background-position: center;
-//         background-repeat:no-repeat;
-//         background-size:cover;
-//     }
-// }
-
 *, ::before, ::after {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -37,7 +23,7 @@ body,
 }
 
 body {
-    font-family: 'Playfair Display SC', serif;
+    font-family: Arial, Helvetica, sans-serif;
    font-size: 1.8rem;
    line-height: 1;
 }
@@ -45,7 +31,7 @@ body {
 a {
     text-decoration: none;
     cursor: pointer;
-    font-family: 'Playfair Display SC', serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 a, a:hover {

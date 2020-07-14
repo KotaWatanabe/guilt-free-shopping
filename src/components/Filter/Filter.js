@@ -24,9 +24,8 @@ const Filter = ({ filterProducts, sortProducts, products, category, filteredProd
             </select>
           </label>
         </div>
-        <div className="category-wrap">
+        <div className="category-wrap" data-test="category-wrap">
           <label>
-            {/* {" "} */}
             Filter Category
             <select
               value={category}
@@ -38,7 +37,7 @@ const Filter = ({ filterProducts, sortProducts, products, category, filteredProd
               }}
             >
               <option value="">ALL</option>
-              <option value="BAG">Bag</option>
+              <option value="BAG">BAG</option>
               <option value="WATCH">WATCH</option>
               <option value="GLASSES">GLASSES</option>
             </select>

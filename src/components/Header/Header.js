@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { auth } from '../../firebase/utils';
 
-const Header = ({ cartItems, currentUser }) => {
+export const Header = ({ cartItems, currentUser }) => {
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0)
     return (
         <header className="header" data-test="header">
@@ -22,7 +22,7 @@ const Header = ({ cartItems, currentUser }) => {
                                 </Link>
                             </li>
                             <li>
-                                <span onClick={() => auth.signOut()} data-test="logout">
+                                <span onClick={() => auth.signOut()}>
                                     <Link to="/" data-test="logout" >
                                         <span className="hide-sm">LOGOUT</span> 
                                         <i class="fas fa-sign-out-alt"></i> 
@@ -31,7 +31,7 @@ const Header = ({ cartItems, currentUser }) => {
                             </li>
                             <li>
                                 <button className="cartBtn">
-                                    <Link to="/cart">
+                                    <Link to="/cart" data-test="myCart">
                                         <i className="fas fa-cart-plus" />
                                             <span className="mycart">my cart</span> 
                                         <span className="count">{totalItems}</span>

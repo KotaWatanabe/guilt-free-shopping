@@ -1,7 +1,6 @@
 import products from './products';
 import {
     GET_PRODUCTS,
-    FILTER_PRODUCTS_BY_CATEGORY,
     ORDER_PRODUCTS_BY_PRICE,
 } from '../actions/types'
 import moxios from 'moxios';
@@ -87,30 +86,4 @@ describe('Produts Reducer', () => {
         expect(newState).toEqual(expectedProducts)
     })
 
-    // it('should sort by price', () => {
-
-    //     const sort = "lowestprice"
-    //     const newState = products(undefined, {
-    //         type:GET_PRODUCTS,
-    //         payload: {
-    //             sort,
-    //             deafaultProducts
-    //         }
-    //     })
-        
-    //     const expectedOrder = [
-    //         {'title': 'test3','price':1},
-    //         {'title': 'test1','price':3},
-    //         {'title': 'test2','price':5}
-    //     ]
-
-    //     const expectedProducts = {
-    //         // "products": expectedOrder,
-    //         "filteredProducts": expectedOrder,
-    //         "isLoading": false,
-    //         // "category":'',
-    //         "sort":sort
-    //     }
-    //     expect(newState).toEqual(expectedProducts)
-    // })
 })

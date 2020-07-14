@@ -6,7 +6,7 @@ import Filter from '../../components/Filter/Filter'
 import Spinner from '../../components/Spinner/Spinner';
 import './styles.scss'
 
-const Products = ({ getProducts, products, isLoading }) => {
+export const Products = ({ getProducts, products, isLoading }) => {
     useEffect(() => {
         getProducts()
     },[])    

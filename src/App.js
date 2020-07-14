@@ -4,7 +4,6 @@ import { auth, handleUserProfile } from './firebase/utils';
 
 import Auth from './Auth/Auth';
 
-// import MainLayout from './layouts/MainLayout';
 import HomepageLayout from './layouts/HomepageLayout';
 
 import Homepage from './pages/Homepage/Homepage';
@@ -18,7 +17,7 @@ import './default.scss';
 import { connect } from 'react-redux';
 import { setCurrentUser } from './actions/user';
 
-const App = props => {
+export const App = props => {
   const { setCurrentUser, currentUser } = props
 
   useEffect(() => {
@@ -41,7 +40,7 @@ const App = props => {
 
   }, [])
     return (
-        <div className="App">
+        <div className="App" data-test="appComponent">
             <Switch>
               <Route exact path="/" render={() => (
                 <HomepageLayout>

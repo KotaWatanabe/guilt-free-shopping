@@ -12,17 +12,17 @@ const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
     return (
         <div className="cartPage">
             {cartItems.length ===  0 ? (
-                <h2>Cart is empty</h2> 
+                <h2 date-test="cartPageTitle">Cart is empty</h2> 
             ) : (
                 <>
-                    <h2>
+                    <h2 date-test="cartPageTitle">
                         You have {totalItems} items in the cart.
                     </h2>
                 </>
             )}
             <ul>
                 {cartItems.map((item) => (
-                    <li key={item.id} className="wrap">
+                    <li key={item.id} className="wrap" data-test="product-list">
                         <div className="content img">
                             <img src={item.img} alt=""/>
                         </div>
@@ -32,19 +32,19 @@ const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
                         </span>
                         <div className="content price">
                             <h3>PRICE</h3>
-                            <p>$ {item.price}</p>
+                            <p data-test="price"><span>$</span> {item.price}</p>
                         </div>
                         <div className="content quantity">
                             <h3>QUANTITY</h3>
                             <p className="quantityBtn">
-                                <button onClick={() => removeFromCart(cartItems, item)}>-</button>
-                                <span>{item.count}</span> 
-                                <button onClick={() => addToCart(cartItems, item)}>+</button>
+                                <button onClick={() => removeFromCart(cartItems, item)} data-test="minusBtn">-</button>
+                                <span data-test="productCount">{item.count}</span> 
+                                <button onClick={() => addToCart(cartItems, item)} data-test="plusBtn">+</button>
                             </p>
                         </div>
                         <div className="content total hide-sm ">
                             <h3>TOTAL</h3>
-                            <p>$ {item.count * item.price}</p>
+                            <p data-test='totalPrice'>${item.count * item.price}</p>
                         </div>
                     </li>
                 ))}
@@ -52,14 +52,14 @@ const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
 
             {cartItems.length > 0 && 
                 <div className="summery">
-                    <h3>Total: ${sum}</h3>
+                    <h3 data-test='totalPrice'>Total: ${sum}</h3>
                     <PayPalButton 
                         sum={sum}
                         clearCart={clearCart}
                     
                     />
                     <Button style={{backgroundColor:'#ff9a9e'}}>Check Out</Button>
-                    <Button onClick={() => clearCart()} style={{background:'#6991c7'}}>Clear Cart</Button>
+                    <Button onClick={() => clearCart()} style={{background:'#6991c7'}} data-test='clearBtn'>Clear Cart</Button>
                 </div>
             }
         </div>
