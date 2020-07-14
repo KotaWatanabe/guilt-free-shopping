@@ -14,7 +14,7 @@ export const Header = ({ cartItems, currentUser }) => {
                 </div>
                 <div className="navMenus">
                     {currentUser && (
-                        <ul>
+                        <ul data-test="navMenus">
                             <li>
                                 <Link to="/products" data-test="products">
                                     <span className="hide-sm">PRODUCTS</span>    

@@ -69,12 +69,6 @@ describe('Header for loggedIn user',() => {
         expect(wrapper.length).toBe(1);
     });
 
-
-    it('Should render products link', () => {           
-        const wrapper = findByTestAttr(component,'products')
-        expect(wrapper.length).toBe(1);
-    });
-
     it('Should render logout link', () => {           
         const wrapper = findByTestAttr(component,'logout')
         expect(wrapper.length).toBe(1);

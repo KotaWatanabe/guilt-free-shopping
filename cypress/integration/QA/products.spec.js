@@ -1,4 +1,4 @@
-describe('homepage UI', () => {
+describe('Products page UI', () => {
     before(function () {
         cy.SignIn()
         cy.visit('/products')
