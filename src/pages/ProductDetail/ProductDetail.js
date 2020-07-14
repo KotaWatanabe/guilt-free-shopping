@@ -1,5 +1,4 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react'
 import { connect } from 'react-redux';
 import { addToCart } from '../../actions/cart';
 import Button from '../../components/Forms/Button/Button';
@@ -10,7 +9,6 @@ const ProductDetail = ({
     addToCart,
     product,
     product: {
-        id,
         title,
         info,
         price,

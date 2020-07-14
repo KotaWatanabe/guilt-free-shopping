@@ -32,7 +32,6 @@ describe('Prodcuts Component wiht loading status ', () => {
     beforeEach(() => {
         component = loadingSetup();
     })
-
     it('Should render spinner component without error', () => {           
         const wrapper = findByTestAttr(component,'spinner')
         expect(wrapper.length).toBe(1);

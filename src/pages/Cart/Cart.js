@@ -1,21 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { addToCart, removeFromCart, clearCart } from '../../actions/cart';
 import Button from '../../components/Forms/Button/Button'
 import PayPalButton from '../../components/PayPalButton/PayPalButton';
 import './styles.scss'
 
-const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
+export const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
     const totalItems = cartItems.reduce((a, c) => a + c.count, 0)
     const sum = cartItems.reduce((a, c) => a + c.price * c.count, 0)
 
     return (
-        <div className="cartPage">
+        <div className="cartPage" data-test="cartPage">
             {cartItems.length ===  0 ? (
-                <h2 date-test="cartPageTitle">Cart is empty</h2> 
+                <h2 data-test="cartPageTitle">Cart is empty</h2> 
             ) : (
                 <>
-                    <h2 date-test="cartPageTitle">
+                    <h2 data-test="cartPageTitle">
                         You have {totalItems} items in the cart.
                     </h2>
                 </>
@@ -58,7 +59,7 @@ const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
                         clearCart={clearCart}
                     
                     />
-                    <Button style={{backgroundColor:'#ff9a9e'}}>Check Out</Button>
+                    <Link to="/products"><Button style={{backgroundColor:'#ff9a9e'}}>Back to Products Page</Button></Link>
                     <Button onClick={() => clearCart()} style={{background:'#6991c7'}} data-test='clearBtn'>Clear Cart</Button>
                 </div>
             }
