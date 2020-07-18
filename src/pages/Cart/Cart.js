@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { addToCart, removeFromCart, clearCart } from '../../actions/cart';
 import Button from '../../components/Forms/Button/Button'
-import PayPalButton from '../../components/PayPalButton/PayPalButton';
+// import PayPalButton from '../../components/PayPalButton/PayPalButton';
 import './styles.scss'
 
 export const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
@@ -54,12 +54,12 @@ export const Cart = ({ cartItems, removeFromCart, addToCart, clearCart }) => {
             {cartItems.length > 0 && 
                 <div className="summery">
                     <h3 data-test='totalPrice'>Total: ${sum}</h3>
-                    <PayPalButton 
+                    {/* <PayPalButton 
                         sum={sum}
                         clearCart={clearCart}
                     
-                    />
-                    <Link to="/products"><Button style={{backgroundColor:'#ff9a9e'}}>Back to Products Page</Button></Link>
+                    /> */}
+                    <Link to="/products"><Button onClick={() => clearCart()} style={{backgroundColor:'#ff9a9e'}}>Check Out</Button></Link>
                     <Button onClick={() => clearCart()} style={{background:'#6991c7'}} data-test='clearBtn'>Clear Cart</Button>
                 </div>
             }
