@@ -4,13 +4,15 @@ import {
     FILTER_PRODUCTS_BY_CATEGORY,
     ORDER_PRODUCTS_BY_PRICE
 } from './types';
+import { storeProducts } from '../data';
 
 export const getProducts = () => async dispatch => {
     try {
-        const res = await axios.get('http://localhost:8000/products/')
+        // const res = await axios.get('http://localhost:8000/products/')
         dispatch({
             type:GET_PRODUCTS,
-            payload:res.data
+            payload:storeProducts
+            // payload:res.data
         });
     } catch (err) {
         console.log(err);

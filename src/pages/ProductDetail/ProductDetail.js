@@ -35,7 +35,11 @@ const ProductDetail = ({
                 </div>
 
             </div>
-            {!inCart ? (
+            <Button onClick={() => addToCart(cartItems,product)}           
+                        style={{background:'#ff9a9e'}}                         
+                        data-test="addCartBtn">Add To Cart
+            </Button>
+            {/* {!inCart ? (
                 <Button onClick={() => addToCart(cartItems,product)}           
                         style={{background:'#ff9a9e'}}                         
                         data-test="addCartBtn">Add To Cart
@@ -43,7 +47,7 @@ const ProductDetail = ({
                 (<Button style={{background:'#6991c7'}} data-test="addCartBtn">
                     Already in Cart
                 </Button>)
-            )}
+            )} */}
         </div>
     )
 }
